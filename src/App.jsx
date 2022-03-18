@@ -1,18 +1,9 @@
 import { useEffect, useState} from "react";
 import { useMoralis } from "react-moralis";
-import {
-	BrowserRouter as Router,
-	Routes,
-	Route,
-	Navigate
-  } from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
-{/*import ERC20Transfers from "components/ERC20Transfers/ERC20Transfers";
-import SearchCollections from "components/SearchCollections";
-import NFTMarketTransactions from "components/NFTMarketTransactions";*/}
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
 import { Layout } from "antd";
@@ -22,6 +13,13 @@ import "./style.css";
 import Home from "components/Home";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	Navigate
+  } from "react-router-dom";
+
 const { Header, Footer } = Layout;
 
 const styles = {
@@ -95,8 +93,6 @@ const App = ({ isServerInfo }) => {
 						<Route path="/NFTMarketPlace" element={<NFTTokenIds inputValue={inputValue} setInputValue={setInputValue} />} />
 						<Route path="/nftBalance" element={<NFTBalance />} />
 						<Route path="/erc20balance" element={<ERC20Balance />} />
-						{/*<Route path="/erc20transfers" element={<ERC20Transfers />} />
-						<Route path="/transactions" element={<NFTMarketTransactions />} />*/}
 						<Route path="/" element={<Navigate replace to="/home" />} />
 						<Route
 							path="/home"
