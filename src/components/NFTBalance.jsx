@@ -3,7 +3,6 @@ import { useMoralis, useNFTBalances } from "react-moralis";
 import { Card, Image, Tooltip, Modal, Input, Skeleton, Alert, Spin, Button } from "antd";
 import {
   FileSearchOutlined,
-  SendOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";

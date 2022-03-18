@@ -10,18 +10,18 @@ import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
-import ERC20Transfers from "components/ERC20Transfers/ERC20Transfers";
+{/*import ERC20Transfers from "components/ERC20Transfers/ERC20Transfers";
+import SearchCollections from "components/SearchCollections";
+import NFTMarketTransactions from "components/NFTMarketTransactions";*/}
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
-import SearchCollections from "components/SearchCollections";
-import { Layout, Tabs } from "antd";
+import { Layout } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import Home from "components/Home";
 import Text from "antd/lib/typography/Text";
 import MenuItems from "./components/MenuItems";
-import NFTMarketTransactions from "components/NFTMarketTransactions";
 const { Header, Footer } = Layout;
 
 const styles = {
