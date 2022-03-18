@@ -4,6 +4,7 @@ import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappP
 import { getEllipsisTxt } from "../../helpers/formatters";
 import Blockie from "../Blockie";
 import "./identicon.css";
+import { Skeleton } from "antd";
 
 const styles = {
   address: {
@@ -17,15 +18,15 @@ const styles = {
 };
 
 function Address(props) {
-  const { walletAddress } = useMoralisDapp();
+  const { walletAddress, isAuthenticated } = useMoralisDapp();
   const [address, setAddress] = useState();
   const [isClicked, setIsClicked] = useState(false);
 
   useEffect(() => {
-    setAddress(props?.address || walletAddress);
-  }, [walletAddress, props]);
+    setAddress(props?.address || (isAuthenticated && walletAddress));
+  }, [walletAddress, isAuthenticated, props]);
 
-  if (!address) return null;
+  if (!address) return <Skeleton paragraph={{ rows: 1, width: "100%" }} title={false} active />;
 
   const Copy = () => (
     <svg

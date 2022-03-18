@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-import { useMoralis } from "react-moralis";
-import { Card, Image, Tooltip, Modal, Input, Alert, Spin, Button } from "antd";
-import { useNFTBalance } from "hooks/useNFTBalance";
-import { FileSearchOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { useMoralis, useNFTBalances } from "react-moralis";
+import { Card, Image, Tooltip, Modal, Input, Skeleton, Alert, Spin, Button } from "antd";
+import {
+  FileSearchOutlined,
+  SendOutlined,
+  ShoppingCartOutlined,
+} from "@ant-design/icons";
 import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
 import { getExplorer } from "helpers/networks";
 import { useWeb3ExecuteFunction } from "react-moralis";
+import { useVerifyMetadata } from "hooks/useVerifyMetadata";
+
 const { Meta } = Card;
 
 const styles = {
@@ -21,7 +26,7 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { NFTBalance, fetchSuccess } = useNFTBalance();
+  const { data: NFTBalances, fetchSuccess } = useNFTBalance();
   const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const [visible, setVisibility] = useState(false);
@@ -32,6 +37,7 @@ function NFTBalance() {
   const contractABIJson = JSON.parse(contractABI);
   const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
+  const {verifyMetadata} = useVerifyMetadata();
 
   async function list(nft, listPrice) {
     setLoading(true);
@@ -41,8 +47,8 @@ function NFTBalance() {
       functionName: listItemFunction,
       abi: contractABIJson,
       params: {
-        nftContract: nft.token_address,
-        tokenId: nft.token_id,
+        nftContract: nft?.token_address,
+        tokenId: nft?.token_id,
         price: String(p),
       },
     };
@@ -150,10 +156,11 @@ function NFTBalance() {
 
     itemImage.save();
   }
-
+  
   return (
-    <>
-      <div style={styles.NFTs}>
+      <div style={{ padding: "15px", maxWidth: "1030px", width: "100%" }}>
+        <h1>🖼 NFT Balances</h1>
+        <div style={styles.NFTs}>
         {contractABIJson.noContractDeployed && (
           <>
             <Alert
@@ -172,19 +179,18 @@ function NFTBalance() {
             <div style={{ marginBottom: "10px" }}></div>
           </>
         )}
-        {NFTBalance &&
-          NFTBalance.map((nft, index) => (
+        <Skeleton loading={!NFTBalances?.result}>
+        {NFTBalances?.result &&
+          NFTBalances?.result.map((nft, index) => {
+            //Verify Metadata
+            nft = verifyMetadata(nft);
+            return(
             <Card
               hoverable
               actions={[
                 <Tooltip title="View On Blockexplorer">
                   <FileSearchOutlined
-                    onClick={() =>
-                      window.open(
-                        `${getExplorer(chainId)}address/${nft.token_address}`,
-                        "_blank"
-                      )
-                    }
+                    onClick={() => window.open(`${getExplorer(chainId)}address/${nft.token_address}`, "_blank")}
                   />
                 </Tooltip>,
                 <Tooltip title="List NFT for sale">
@@ -205,7 +211,9 @@ function NFTBalance() {
             >
               <Meta title={nft.name} description={nft.contract_type} />
             </Card>
-          ))}
+            );
+            })}
+        </Skeleton>
       </div>
 
       <Modal
@@ -243,7 +251,8 @@ function NFTBalance() {
           />
         </Spin>
       </Modal>
-    </>
+      
+      </div>
   );
 }
 

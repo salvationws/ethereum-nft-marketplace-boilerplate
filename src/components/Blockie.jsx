@@ -1,3 +1,4 @@
+import { Skeleton } from "antd";
 import Blockies from "react-blockies";
 import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 
@@ -8,15 +9,11 @@ import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProv
  */
 
 function Blockie(props) {
-  const { walletAddress } = useMoralisDapp();
-  if ((!props.address && !props.currentWallet) || !walletAddress) return null;
+  const { walletAddress, isAuthenticated } = useMoralisDapp();
+  if (!props.address && !account) return <Skeleton.Avatar active size={40} />;
 
   return (
-    <Blockies
-      seed={props.currentWallet ? walletAddress.toLowerCase() : props.address.toLowerCase()}
-      className="identicon"
-      {...props}
-    />
+    <Blockies seed={props.currentWallet ? account.toLowerCase() : props.address.toLowerCase()} className="identicon" {...props} />
   );
 }
 
