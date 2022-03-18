@@ -9,7 +9,6 @@ function MoralisDappProvider({ children }) {
   const [contractABI, setContractABI] = useState('{"noContractDeployed": true}'); //Smart Contract ABI here
   const [marketAddress, setMarketAddress] = useState(); //Smart Contract Address Here
 
-
   useEffect(() => {
     Moralis.onChainChanged(function (chain) {
       setChainId(chain);

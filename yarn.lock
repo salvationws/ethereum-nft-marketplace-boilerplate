@@ -2162,9 +2162,9 @@
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
 "@toruslabs/base-controllers@^1.4.2", "@toruslabs/base-controllers@^1.6.6":
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/@toruslabs/base-controllers/-/base-controllers-1.6.7.tgz#e96d23ffb43e1b4ce3d9ff41db80b6cdfc2c8f95"
-  integrity sha512-Izsw/O4q/LwoVv5WDmA95dfuwiovtCIjty25auRjRDXgBFRhBH+qkbWe/0ArKi7jrA6wtfIz+6UQCeyoM2hE8w==
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/@toruslabs/base-controllers/-/base-controllers-1.6.9.tgz#aa25dc7bd0e32c01c1f7cb03ceb14d2bf53c2228"
+  integrity sha512-FU/7/kyT9qqsw6hTRUuz1mAIaekhXMphcXkFMweU1lMKI9ciR3+SDQADQZb9MCR/w5r35KxoMsu9kd2X287qeg==
   dependencies:
     "@toruslabs/http-helpers" "^2.2.0"
     "@toruslabs/openlogin-jrpc" "^1.6.0"

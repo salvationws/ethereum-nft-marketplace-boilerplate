@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
-import QuickStart from "components/QuickStart";
+import Home from "components/Home";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import { MoralisDappProvider } from "./providers/MoralisDappProvider/MoralisDappProvider";
 
@@ -30,16 +30,16 @@ const Application = () => {
   else {
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <QuickStart />
+        <Home />
       </div>
     );
   }
 };
 
 ReactDOM.render(
-  <StrictMode>
-    <Application />
-  </StrictMode>,
+  //<StrictMode>
+    <Application />,
+  //</StrictMode>,
   document.getElementById("root")
 );
 

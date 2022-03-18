@@ -28,12 +28,6 @@ function MenuItems() {
 			<Menu.Item key="/erc20balance">
 				<NavLink to="/erc20balance">💰 Balances</NavLink>
 			</Menu.Item>
-			<Menu.Item key="/erc20transfers">
-				<NavLink to="/erc20transfers">💸 Transfers</NavLink>
-			</Menu.Item>
-			<Menu.Item key="/transactions">
-				<NavLink to="/transactions">📑 Your Transactions</NavLink>
-			</Menu.Item>
 		</Menu>
 	);
 }

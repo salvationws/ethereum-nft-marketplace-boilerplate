@@ -10,7 +10,7 @@ import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
-import ERC20Transfers from "components/ERC20Transfers";
+import ERC20Transfers from "components/ERC20Transfers/ERC20Transfers";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
 import SearchCollections from "components/SearchCollections";
@@ -71,7 +71,7 @@ const App = ({ isServerInfo }) => {
 			<Router>
 				<Header style={styles.header}>
 					<Logo />
-          <SearchCollections setInputValue={setInputValue}/>
+          {/*<SearchCollections setInputValue={setInputValue}/>*/}
 					<MenuItems />
 					<div style={styles.headerRight}>
 						<Chains />
@@ -95,8 +95,8 @@ const App = ({ isServerInfo }) => {
 						<Route path="/NFTMarketPlace" element={<NFTTokenIds inputValue={inputValue} setInputValue={setInputValue} />} />
 						<Route path="/nftBalance" element={<NFTBalance />} />
 						<Route path="/erc20balance" element={<ERC20Balance />} />
-						<Route path="/erc20transfers" element={<ERC20Transfers />} />
-						<Route path="/transactions" element={<NFTMarketTransactions />} />
+						{/*<Route path="/erc20transfers" element={<ERC20Transfers />} />
+						<Route path="/transactions" element={<NFTMarketTransactions />} />*/}
 						<Route path="/" element={<Navigate replace to="/home" />} />
 						<Route
 							path="/home"
