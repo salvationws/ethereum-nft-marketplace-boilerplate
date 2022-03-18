@@ -1,10 +1,9 @@
 import { useNativeBalance } from "react-moralis";
-import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProvider";
 
 function NativeBalance(props) {
   const { data: balance } = useNativeBalance(props);
-  const { wallet } = useMoralisDapp();
-  const { isAuthenticated } = useMoralis();
+  const { wallet, isAuthenticated} = useMoralisDapp();
 
   if (!wallet || !isAuthenticated) return null;
 

@@ -85,9 +85,9 @@ const menuItems = [
 ];
 
 function Chains() {
-  const { chainId, chain } = useMoralisDapp();
+  const { chainId } = useMoralisDapp();
   const { switchNetwork } = useChain();
-  const { isAuthenticated } = useMoralis();
+  const { isAuthenticated, chain } = useMoralis();
   const [selected, setSelected] = useState({});
 
   console.log("chain", chain);

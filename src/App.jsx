@@ -2,9 +2,9 @@ import { useEffect, useState} from "react";
 import { useMoralis } from "react-moralis";
 import {
 	BrowserRouter as Router,
-	Switch,
+	Routes,
 	Route,
-	Redirect,
+	Navigate
   } from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
@@ -63,8 +63,7 @@ const App = ({ isServerInfo }) => {
 	useEffect(() => {
 		const connectorId = window.localStorage.getItem("connectorId");
 		if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
-		const connectorId = window.localStorage.getItem("connectorId");
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-depss
 	}, [isAuthenticated, isWeb3Enabled]);
 
 	return (

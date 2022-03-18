@@ -26,7 +26,7 @@ const styles = {
 };
 
 function NFTBalance() {
-  const { data: NFTBalances, fetchSuccess } = useNFTBalance();
+  const { data: NFTBalances, fetchSuccess } = useNFTBalances();
   const { chainId, marketAddress, contractABI } = useMoralisDapp();
   const { Moralis } = useMoralis();
   const [visible, setVisibility] = useState(false);

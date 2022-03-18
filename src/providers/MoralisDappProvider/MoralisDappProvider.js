@@ -15,16 +15,16 @@ function MoralisDappProvider({ children }) {
       setChainId(chain);
     });
 
-    Moralis.onAccountsChanged(function (address) {
+    Moralis.onAccountChanged(function (address) {
       setWalletAddress(address[0]);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => setChainId(web3.givenProvider?.chainId));
+  useEffect(() => setChainId(web3?.givenProvider?.chainId));
   useEffect(
-    () => setWalletAddress(web3.givenProvider?.selectedAddress || user?.get("ethAddress")),
+    () => setWalletAddress(web3?.givenProvider?.selectedAddress || user?.get("ethAddress")),
     [web3, user]
   );
 
