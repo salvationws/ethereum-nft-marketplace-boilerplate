@@ -10,10 +10,10 @@ import { useMoralisDapp } from "../providers/MoralisDappProvider/MoralisDappProv
 
 function Blockie(props) {
   const { walletAddress, isAuthenticated } = useMoralisDapp();
-  if (!props.address && !account) return <Skeleton.Avatar active size={40} />;
+  if (!props.address && (!walletAddress || !isAuthenticated)) return <Skeleton.Avatar active size={40} />;
 
   return (
-    <Blockies seed={props.currentWallet ? account.toLowerCase() : props.address.toLowerCase()} className="identicon" {...props} />
+    <Blockies seed={props.currentWallet ? walletAddress.toLowerCase() : props.address.toLowerCase()} className="identicon" {...props} />
   );
 }
 

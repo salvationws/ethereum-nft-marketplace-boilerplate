@@ -3,7 +3,8 @@ import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappP
 
 function NativeBalance(props) {
   const { data: balance } = useNativeBalance(props);
-  const { wallet, isAuthenticated } = useMoralisDapp();
+  const { wallet } = useMoralisDapp();
+  const { isAuthenticated } = useMoralis();
 
   if (!wallet || !isAuthenticated) return null;
 
