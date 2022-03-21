@@ -2,7 +2,6 @@ import { useEffect, useState} from "react";
 import { useMoralis } from "react-moralis";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
-import TokenPrice from "components/TokenPrice";
 import ERC20Balance from "components/ERC20Balance";
 import NFTBalance from "components/NFTBalance";
 import NFTTokenIds from "components/NFTTokenIds";
@@ -61,7 +60,7 @@ const App = ({ isServerInfo }) => {
 	useEffect(() => {
 		const connectorId = window.localStorage.getItem("connectorId");
 		if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
-		// eslint-disable-next-line react-hooks/exhaustive-depss
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isAuthenticated, isWeb3Enabled]);
 
 	return (
@@ -73,12 +72,6 @@ const App = ({ isServerInfo }) => {
 					<MenuItems />
 					<div style={styles.headerRight}>
 						<Chains />
-						<TokenPrice
-							address="0x1f9840a85d5af5bf1d1762f925bdaddc4201f984"
-							chain="eth"
-							image="https://cloudflare-ipfs.com/ipfs/QmXttGpZrECX5qCyXbBQiqgQNytVGeZW5Anewvh2jc4psg/"
-							size="40px"
-						/>
 						<NativeBalance />
 						<Account />
 					</div>

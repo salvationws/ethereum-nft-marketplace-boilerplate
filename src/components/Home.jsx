@@ -1,6 +1,5 @@
 import { Card, Timeline, Typography } from "antd";
-import React, { useMemo } from "react";
-import { useMoralis } from "react-moralis";
+import React from "react";
 
 const { Text } = Typography;
 
@@ -23,7 +22,6 @@ const styles = {
 };
 
 export default function Home({ isServerInfo }) {
-  const { Moralis } = useMoralis();
 
   return (
     <div style={{ display: "flex", gap: "10px" }}>

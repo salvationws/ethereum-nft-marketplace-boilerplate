@@ -1,4 +1,4 @@
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 import { useMoralis } from "react-moralis";
 import { getEllipsisTxt } from "helpers/formatters";
 import Blockie from "../Blockie";

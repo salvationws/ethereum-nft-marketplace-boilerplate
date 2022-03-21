@@ -37,7 +37,7 @@ function NFTBalance() {
   const listItemFunction = "createMarketItem";
   const ItemImage = Moralis.Object.extend("ItemImages");
   const {verifyMetadata} = useVerifyMetadata();
-
+	const { isAuthenticated } = useMoralis();
   async function list(nft, listPrice) {
     setLoading(true);
     const p = listPrice * ("1e" + 18);
@@ -169,13 +169,23 @@ function NFTBalance() {
             <div style={{ marginBottom: "10px" }}></div>
           </>
         )}
-        {!fetchSuccess && (
+        {!isAuthenticated && (
           <>
             <Alert
-              message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
+              message="You are not Authenticated!"
               type="warning"
             />
             <div style={{ marginBottom: "10px" }}></div>
+          </>
+        )}
+        {isAuthenticated && !fetchSuccess && (
+          <>
+            <Alert
+              message="Unable to fetch all NFT metadata...!"
+              type="warning"
+            />
+            <div style={{ marginBottom: "10px" }}
+            ></div>
           </>
         )}
         <Skeleton loading={!NFTBalances?.result}>

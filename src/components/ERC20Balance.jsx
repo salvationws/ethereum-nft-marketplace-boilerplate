@@ -1,10 +1,10 @@
 import { useMoralis, useERC20Balances } from "react-moralis";
-import { Skeleton, Table } from "antd";
+import { Skeleton, Table, Alert } from "antd";
 import { getEllipsisTxt } from "../helpers/formatters";
 
 function ERC20Balance(props) {
   const { data: assets } = useERC20Balances(props);
-  const { Moralis } = useMoralis();
+  const { isAuthenticated, Moralis } = useMoralis();
 
   const columns = [
     {
@@ -50,6 +50,15 @@ function ERC20Balance(props) {
   return (
     <div style={{ width: "65vw", padding: "15px" }}>
       <h1>💰Token Balances</h1>
+      {!isAuthenticated && (
+              <>
+                <Alert
+                  message="You are not Authenticated!"
+                  type="warning"
+                />
+                <div style={{ marginBottom: "10px" }}></div>
+              </>
+            )}
       <Skeleton loading={!assets}>
         <Table
           dataSource={assets}

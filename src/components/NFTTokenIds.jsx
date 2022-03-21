@@ -66,7 +66,7 @@ function NFTTokenIds({ inputValue, setInputValue }) {
     useMoralisDapp();
   const nativeName = getNativeByChain(chainId);
   const contractABIJson = JSON.parse(contractABI);
-  const { Moralis } = useMoralis();
+  const { isAuthenticated, Moralis } = useMoralis();
   const queryMarketItems = useMoralisQuery("MarketItems");
   const fetchMarketItems = JSON.parse(
     JSON.stringify(queryMarketItems.data, [
@@ -181,10 +181,10 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         )}
         {inputValue !== "explore" && totalNFTs !== undefined && (
           <>
-            {!fetchSuccess && (
+            {!isAuthenticated && (
               <>
                 <Alert
-                  message="Unable to fetch all NFT metadata... We are searching for a solution, please try again later!"
+                  message="You are not Authenticated!"
                   type="warning"
                 />
                 <div style={{ marginBottom: "10px" }}></div>
@@ -217,6 +217,15 @@ function NFTTokenIds({ inputValue, setInputValue }) {
         )}
 
         <div style={styles.NFTs}>
+        {!isAuthenticated && (
+              <>
+                <Alert
+                  message="You are not Authenticated!"
+                  type="warning"
+                />
+                <div style={{ marginBottom: "10px" }}></div>
+              </>
+            )}
           {inputValue === "explore" &&
             NFTCollections?.map((nft, index) => (
               <Card

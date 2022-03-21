@@ -3,7 +3,7 @@ import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 import { AvaxLogo, PolygonLogo, BSCLogo, ETHLogo } from "./Logos";
 import { useChain, useMoralis } from "react-moralis";
-import { useMoralisDapp } from "providers/MoralisDappProvider/MoralisDappProvider";
+import { useMoralisDapp } from "../../providers/MoralisDappProvider/MoralisDappProvider";
 
 const styles = {
   item: {
@@ -85,8 +85,7 @@ const menuItems = [
 ];
 
 function Chains() {
-  const { chainId } = useMoralisDapp();
-  const { switchNetwork, chain } = useChain();
+  const { switchNetwork, chainId, chain } = useChain();
   const { isAuthenticated } = useMoralis();
   const [selected, setSelected] = useState({});
 
